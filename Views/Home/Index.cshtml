@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Page content = ViewBag.Page;
+}
+
+<div class="text-center">
+    <h1 class="display-4">@content.Title</h1>
+    
+    <p>@Html.Raw(@content.Body)</p>
+</div>
