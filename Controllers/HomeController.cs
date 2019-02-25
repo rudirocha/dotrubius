@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
-using Contentful.Core;
-using Contentful.Core.Search;
 using Microsoft.AspNetCore.Mvc;
 using dotrubius.Models;
 using dotrubius.Services;
@@ -21,9 +16,11 @@ namespace dotrubius.Controllers
             _contentFullService = contentFullService;
         }
         
-        public async Task<IActionResult> Index()
+        [Route("/")]
+        [Route("/{page}")]
+        public async Task<IActionResult> Index(string page)
         {
-            ViewBag.Page = _contentFullService.GetContent(ContentType.CONTENT);
+            ViewBag.Page = _contentFullService.GetContent(ContentType.CONTENT, page);
             return View();
         }
 
